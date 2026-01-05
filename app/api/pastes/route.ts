@@ -57,7 +57,10 @@ export async function POST(request: Request) {
     );
 
     // 7️⃣ Build URL
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
 
     return NextResponse.json(
       {
